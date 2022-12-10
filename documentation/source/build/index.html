@@ -1,0 +1,1534 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Xeparrot V0.0.1"
+        >
+    <title>XeParrot Shopper API</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-f7f23d64.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-127ea029.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
+
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-3c89816f.png" class="logo" alt="" />
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#install" class="toc-h1 toc-link" data-title="Install">Install</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#download" class="toc-h2 toc-link" data-title="Download">Download</a>
+                  </li>
+                  <li>
+                    <a href="#environment-files" class="toc-h2 toc-link" data-title="Environment Files">Environment Files</a>
+                  </li>
+                  <li>
+                    <a href="#composer" class="toc-h2 toc-link" data-title="Composer">Composer</a>
+                  </li>
+                  <li>
+                    <a href="#npm-or-yarn" class="toc-h2 toc-link" data-title="NPM or YARN">NPM or YARN</a>
+                  </li>
+                  <li>
+                    <a href="#create-database" class="toc-h2 toc-link" data-title="Create Database">Create Database</a>
+                  </li>
+                  <li>
+                    <a href="#artisan-commands" class="toc-h2 toc-link" data-title="Artisan Commands">Artisan Commands</a>
+                  </li>
+                  <li>
+                    <a href="#npm-run-39-39" class="toc-h2 toc-link" data-title="NPM Run '*'">NPM Run '*'</a>
+                  </li>
+                  <li>
+                    <a href="#php-unit" class="toc-h2 toc-link" data-title="PHP Unit">PHP Unit</a>
+                  </li>
+                  <li>
+                    <a href="#storage-link" class="toc-h2 toc-link" data-title="Storage Link">Storage Link</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#structure" class="toc-h1 toc-link" data-title="Structure">Structure</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#domain-structure" class="toc-h2 toc-link" data-title="Domain Structure">Domain Structure</a>
+                  </li>
+                  <li>
+                    <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
+                  </li>
+                  <li>
+                    <a href="#middleware" class="toc-h2 toc-link" data-title="Middleware">Middleware</a>
+                  </li>
+                  <li>
+                    <a href="#requests" class="toc-h2 toc-link" data-title="Requests">Requests</a>
+                  </li>
+                  <li>
+                    <a href="#models" class="toc-h2 toc-link" data-title="Models">Models</a>
+                  </li>
+                  <li>
+                    <a href="#observers" class="toc-h2 toc-link" data-title="Observers">Observers</a>
+                  </li>
+                  <li>
+                    <a href="#rules" class="toc-h2 toc-link" data-title="Rules">Rules</a>
+                  </li>
+                  <li>
+                    <a href="#services" class="toc-h2 toc-link" data-title="Services">Services</a>
+                  </li>
+                  <li>
+                    <a href="#exceptions" class="toc-h2 toc-link" data-title="Exceptions">Exceptions</a>
+                  </li>
+                  <li>
+                    <a href="#helpers" class="toc-h2 toc-link" data-title="Helpers">Helpers</a>
+                  </li>
+                  <li>
+                    <a href="#liveware" class="toc-h2 toc-link" data-title="Liveware">Liveware</a>
+                  </li>
+                  <li>
+                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#resource-structure" class="toc-h1 toc-link" data-title="Resource Structure">Resource Structure</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#javascript" class="toc-h2 toc-link" data-title="Javascript">Javascript</a>
+                  </li>
+                  <li>
+                    <a href="#language" class="toc-h2 toc-link" data-title="Language">Language</a>
+                  </li>
+                  <li>
+                    <a href="#scss" class="toc-h2 toc-link" data-title="SCSS">SCSS</a>
+                  </li>
+                  <li>
+                    <a href="#view" class="toc-h2 toc-link" data-title="View">View</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#xemodule" class="toc-h1 toc-link" data-title="XeModule">XeModule</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#quick-example" class="toc-h2 toc-link" data-title="Quick Example">Quick Example</a>
+                  </li>
+                  <li>
+                    <a href="#create-module" class="toc-h2 toc-link" data-title="Create Module">Create Module</a>
+                  </li>
+                  <li>
+                    <a href="#naming-convention" class="toc-h2 toc-link" data-title="Naming convention">Naming convention</a>
+                  </li>
+                  <li>
+                    <a href="#folder-structure" class="toc-h2 toc-link" data-title="Folder Structure">Folder Structure</a>
+                  </li>
+                  <li>
+                    <a href="#custom-name-spaces" class="toc-h2 toc-link" data-title="Custom Name Spaces">Custom Name Spaces</a>
+                  </li>
+                  <li>
+                    <a href="#default-namespace" class="toc-h2 toc-link" data-title="Default namespace">Default namespace</a>
+                  </li>
+                  <li>
+                    <a href="#overwrite-the-generated-files" class="toc-h2 toc-link" data-title="Overwrite the generated files">Overwrite the generated files</a>
+                  </li>
+                  <li>
+                    <a href="#overwrite-the-paths" class="toc-h2 toc-link" data-title="Overwrite the paths">Overwrite the paths</a>
+                  </li>
+                  <li>
+                    <a href="#scan-additional-folders-for-xemodules" class="toc-h2 toc-link" data-title="Scan additional folders for xemodules">Scan additional folders for xemodules</a>
+                  </li>
+                  <li>
+                    <a href="#composer-file-template" class="toc-h2 toc-link" data-title="Composer file template">Composer file template</a>
+                  </li>
+                  <li>
+                    <a href="#caching" class="toc-h2 toc-link" data-title="Caching">Caching</a>
+                  </li>
+                  <li>
+                    <a href="#registering-custom-namespace" class="toc-h2 toc-link" data-title="Registering custom namespace">Registering custom namespace</a>
+                  </li>
+                  <li>
+                    <a href="#helpers-2" class="toc-h2 toc-link" data-title="Helpers">Helpers</a>
+                  </li>
+                  <li>
+                    <a href="#compiling-assets" class="toc-h2 toc-link" data-title="Compiling Assets">Compiling Assets</a>
+                  </li>
+                  <li>
+                    <a href="#running-mix" class="toc-h2 toc-link" data-title="Running Mix">Running Mix</a>
+                  </li>
+                  <li>
+                    <a href="#artisan-commands-2" class="toc-h2 toc-link" data-title="Artisan commands">Artisan commands</a>
+                  </li>
+                  <li>
+                    <a href="#generator-commands" class="toc-h2 toc-link" data-title="Generator commands">Generator commands</a>
+                  </li>
+                  <li>
+                    <a href="#facade-methods" class="toc-h2 toc-link" data-title="Facade methods">Facade methods</a>
+                  </li>
+                  <li>
+                    <a href="#module-methods" class="toc-h2 toc-link" data-title="Module Methods">Module Methods</a>
+                  </li>
+                  <li>
+                    <a href="#module-resources" class="toc-h2 toc-link" data-title="Module Resources">Module Resources</a>
+                  </li>
+                  <li>
+                    <a href="#configuration-2" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                  </li>
+                  <li>
+                    <a href="#module-views" class="toc-h2 toc-link" data-title="Module Views">Module Views</a>
+                  </li>
+                  <li>
+                    <a href="#language-files" class="toc-h2 toc-link" data-title="Language files">Language files</a>
+                  </li>
+                  <li>
+                    <a href="#module-console-commands" class="toc-h2 toc-link" data-title="Module Console Commands">Module Console Commands</a>
+                  </li>
+                  <li>
+                    <a href="#registering-the-command" class="toc-h2 toc-link" data-title="Registering the command">Registering the command</a>
+                  </li>
+                  <li>
+                    <a href="#registering-module-events" class="toc-h2 toc-link" data-title="Registering Module Events">Registering Module Events</a>
+                  </li>
+                  <li>
+                    <a href="#creating-an-eventserviceprovider" class="toc-h2 toc-link" data-title="Creating an EventServiceProvider">Creating an EventServiceProvider</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#menu-management" class="toc-h1 toc-link" data-title="Menu Management">Menu Management</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#quick-example-2" class="toc-h2 toc-link" data-title="Quick Example">Quick Example</a>
+                  </li>
+                  <li>
+                    <a href="#creating-menu" class="toc-h2 toc-link" data-title="Creating Menu">Creating Menu</a>
+                  </li>
+                  <li>
+                    <a href="#menu-item" class="toc-h2 toc-link" data-title="Menu Item">Menu Item</a>
+                  </li>
+                  <li>
+                    <a href="#menu-dropdown" class="toc-h2 toc-link" data-title="Menu Dropdown">Menu Dropdown</a>
+                  </li>
+                  <li>
+                    <a href="#menu-dropdown-multi-level" class="toc-h2 toc-link" data-title="Menu Dropdown Multi Level">Menu Dropdown Multi Level</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#admin-pages" class="toc-h1 toc-link" data-title="Admin Pages">Admin Pages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#define-controllers" class="toc-h2 toc-link" data-title="Define Controllers">Define Controllers</a>
+                  </li>
+                  <li>
+                    <a href="#add-form-controllers" class="toc-h2 toc-link" data-title="Add form controllers">Add form controllers</a>
+                  </li>
+                  <li>
+                    <a href="#form-component-types" class="toc-h2 toc-link" data-title="Form component types">Form component types</a>
+                  </li>
+                  <li>
+                    <a href="#example-form" class="toc-h2 toc-link" data-title="Example Form">Example Form</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://xeparrot.io'>Developed by Sanjaya Senevirathne</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='api-reference'>API Reference</h1><h2 id='introduction'>Introduction</h2>
+<p>Welcome to the Xeparrot Developer Documentation V0.0.1. You can use this API to access XeParrot endpoints, which can get information of various shoppers, products, webauthn, auth, payment details and addresses in the database.</p>
+
+<p>We have language bindings in curl You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h1 id='install'>Install</h1><h2 id='download'>Download</h2>
+<p>Download the files above and place on your server.</p>
+<h2 id='environment-files'>Environment Files</h2>
+<p>This package ships with a .env.example file in the root of the project.</p>
+
+<p>You must rename this file to just .env</p>
+
+<aside class="success">
+Note: Make sure you have hidden files shown on your system.
+</aside>
+<h2 id='composer'>Composer</h2>
+<p>XeParrot project dependencies are managed through the PHP Composer tool. The first step is to install the depencencies by navigating into your project in terminal and typing this command</p>
+
+<p><code>composer install</code></p>
+<h2 id='npm-or-yarn'>NPM or YARN</h2>
+<p>In order to install the Javascript packages for frontend development, you will need the Node Package Manager, and optionally the Yarn Package Manager by Facebook (Recommended)</p>
+
+<p>If you only have NPM installed you have to run this command from the root of the project:</p>
+
+<p><code>npm install</code></p>
+
+<p>If you have Yarn installed, run this instead from the root of the project:</p>
+
+<p><code>yarn</code></p>
+<h2 id='create-database'>Create Database</h2>
+<p>You must create your database on your server and on your .env file update the following lines:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+
+</code></pre></div>
+<p>Change these lines to reflect your new database settings.</p>
+<h2 id='artisan-commands'>Artisan Commands</h2><h3 id='generate-key'>Generate Key</h3>
+<p>The first thing we are going to do is set the key that Laravel will use when doing encryption.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan key:generate
+
+</code></pre></div><h3 id='migrate-database'>Migrate Database</h3>
+<p>You should see a green message stating your key was successfully generated. As well as you should see the APP_KEY variable in your .env file reflected.</p>
+
+<p>It&#39;s time to see if your database credentials are correct.</p>
+
+<p>We are going to run the built in migrations to create the database tables:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan migrate
+
+</code></pre></div><h3 id='seeds-dummy-data'>Seeds Dummy Data</h3>
+<p>You should see a message for each table migrated, if you don&#39;t and see errors, than your credentials are most likely not correct.</p>
+
+<p>We are now going to set the administrator account information. To do this you need to navigate to this file and change the name/email/password of the Administrator account.</p>
+
+<p>You can delete the other dummy users, but do not delete the administrator account or you will not be able to access the backend.</p>
+
+<p>Now seed the database with:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan db:seed
+
+</code></pre></div>
+<p>You should get a message for each file seeded, you should see the information in your database tables.</p>
+<h2 id='npm-run-39-39'>NPM Run &#39;*&#39;</h2>
+<p>Now that you have the database tables and default rows, you need to build the styles and scripts.</p>
+<h3 id='run-npm-on-your-application'>Run NPM on your Application</h3>
+<p>These files are generated using Laravel Mix, which is a wrapper around many tools, and works off the webpack.mix.js in the root of the project.</p>
+
+<p>You can build with:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+npm run &lt;command&gt;
+
+</code></pre></div>
+<p>The available commands are listed at the top of the package.json file under the &#39;scripts&#39; key.</p>
+
+<p>You will see a lot of information flash on the screen and then be provided with a table at the end explaining what was compiled and where the files live.</p>
+
+<p>At this point you are done, you should be able to hit the project in your local browser and see the project, as well as be able to log in with the administrator and view the backend</p>
+<h2 id='php-unit'>PHP Unit</h2>
+<p>After your project is installed, make sure you run the test suite to make sure all of the parts are working correctly. From the root of your project run:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan phpunit
+
+</code></pre></div>
+<p>You will see a dot(.) appear for each of the hundreds of tests, and then be provided with the amount of passing tests at the end. There should be no failures with a fresh install.</p>
+<h2 id='storage-link'>Storage Link</h2>
+<p>After your project is installed you must run this command to link your public storage folder for user avatar uploads:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan storage:link
+
+</code></pre></div><h1 id='structure'>Structure</h1><h2 id='domain-structure'>Domain Structure</h2>
+<p>The structure of each domain is up to you, but is good practice to just follow the default Laravel app folder structure.</p>
+
+<p>For example, the Auth domain has code relevant to the <code>authentication/authorization</code> portion of the application, and is broken
+down into all the relevant folders: <code>Events/Http/Listeners/Models/etc</code>. These are just namespaced files placed here instead
+ of normally like <code>App/Http/Auth</code> it&#39;s <code>App/Domains/Auth/Http</code>.</p>
+<h2 id='events'>Events</h2>
+<p>Note: All current events in this project are processed with a like-named listener class that is registered in EventServiceProvider and stored in that domains Listeners directory.</p>
+
+<p>Most events are used to log information using spaties activity-log package.</p>
+
+<p>Some events have extra functionality:</p>
+
+<ul>
+<li>UserLoggedIn: - Sets the users last_login_at and last_login_ip columns.</li>
+<li>PasswordReset: - This one is dispatched from the Laravel core, but is caught to set the password_changed_at column of the current user to now().</li>
+</ul>
+<h2 id='middleware'>Middleware</h2>
+<p>There are many included middleware that are not Laravel default:</p>
+
+<ul>
+<li><p><code>App\Domains\Auth\Http\Middleware\AdminCheck</code> - Passes if the current user is an administrator.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\PasswordExpires</code> - If the users password is expired based on the configs, it sends them to the change password page.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\SuperAdminCheck</code> - Checks to see if the current user is an administrator and has all roles and permissions.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\ToBeLoggedOut</code> - Checks to see if the current users to_be_logged_out boolean is set to true and logs them out if so.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\TwoFactorAuthenticationStatus</code> - Checks to see if 2FA is needed for the current route.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\UserCheck</code> - Passes if the current user is of type user.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\UserTypeCheck</code> - Checks to see if the current user is of the type passed in.</p></li>
+<li><p><code>App\Http\Middleware\LocaleMiddleware</code> - Switches the current locale.</p></li>
+</ul>
+<h2 id='requests'>Requests</h2>
+<p>This method is opinionated, so refactor how you see fit.</p>
+
+<p>Form requests are used where validation or authorization is needed for a request (and a policy isn&#39;t the best choice for the given request) and is injected into the controllers action signature.</p>
+
+<p>Form requests are not used in Laravel&#39;s default auth scaffolding controllers where a validate() method is supplied such as login and register.</p>
+
+<aside class="success">
+Note: Any exceptions thrown by form requests are instances of Laravel's AuthorizationException and are caught in the Exception handler which formats the response.
+</aside>
+<h2 id='models'>Models</h2>
+<p>Models are organized by domain, and furthermore I use traits to organize each model:</p>
+
+<ul>
+<li><code>Attribute/MODELAttribute</code> - Holds all the attribute modifiers for the given model.</li>
+<li><code>Method/MODELMethod</code> - Holds all the methods for the given model. (There are some methods in the User model that must be in the root, please don&#39;t make PRs to move them)</li>
+<li><code>Relationship/MODELRelationship</code> - Holds all the relationships for the given model.</li>
+<li><code>Scope/MODELScope</code> - Holds all the scopes for the given model.</li>
+</ul>
+
+<p>Model properties such as $dates, $casts, $appends, and $with are used where necessary.</p>
+<h2 id='observers'>Observers</h2>
+<p>There is one observer included with the project, that is registered in the ObserverServiceProvider:</p>
+
+<ul>
+<li>UserObserver: - This observer hooks the users created and updated events and logs new password histories if the config allows for it.</li>
+</ul>
+<h2 id='rules'>Rules</h2>
+<p>There is one rule included with the project, that is used in any request dealing with password changes:</p>
+
+<ul>
+<li>UnusedPassword: - Checks to see if the password the user is changing to has not been used for the last X times as defined in the config.</li>
+</ul>
+<h2 id='services'>Services</h2>
+<p>Services are classes to attempt to extract database logic out of the controllers.</p>
+
+<p>There is a BaseService class you can extend, who&#39;s constructor accepts a model and inherits some useful functionality such as get(), count(), find(), etc.</p>
+
+<p>Example:</p>
+
+<p>Instead of duplicating this line everywhere:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findOrFail</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+</code></pre></div>
+<p>You can use: </p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$user</span> <span class="o">=</span> <span class="nf">resolve</span><span class="p">(</span><span class="nc">UserService</span><span class="o">::</span><span class="n">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">findOrFail</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+</code></pre></div>
+<p>It&#39;s longer, but it&#39;s extracted out to one place in the codebase instead of duplicating logic everywhere. This is just an example, and a one liner usually isn&#39;t a big deal, but extracting out multi-line logic that doesn&#39;t belong in a model or elsewhere is good to have in a service dedicated to one model.</p>
+<h2 id='exceptions'>Exceptions</h2>
+<p>Admittedly, the exception classes could be more descriptive, and that is a goal for the next version.</p>
+
+<p>But for now, there are two non-laravel exceptions that can be used:</p>
+
+<ul>
+<li><p>GeneralException: - I use this when I want to throw an exception and stop the execution of code, usually in a catch block or if an save/update fails. This exception does not report to the log files, instead it redirects back with the message (and old input) in an alert-danger bootstrap alert which is rendered from the messages blade partial using the flash_danger key.</p></li>
+<li><p>ReportableException: - Same functionality as GeneralException except the exceptions get caught by the logger.
+The Exception Handler class also catches a few Laravel/Package exceptions to perform other functionality.</p></li>
+</ul>
+<h2 id='helpers'>Helpers</h2>
+<p>Though some people say it&#39;s not a good design pattern to have helper classes, I found this method easier to organize than just including a helpers.php file in composers file section.</p>
+
+<p>The <code>App\Helpers</code> directory comes with one folder:</p>
+
+<ul>
+<li>Global: - The Global folder is a special helpers directory, any file in this folder is autoloaded and the functions become available globally just like a regular helpers file loaded with composer. The HelperServiceProvider does the loading.
+Any helper class placed outside of the Global folder is just a normal namespaced class that you can resolve normally.</li>
+</ul>
+<h2 id='liveware'>Liveware</h2>
+<p>This project includes Laravel Livewire as a dependency because it makes use of my Laravel Livewire Tables plugin for the datatables functionality.</p>
+
+<p>You can find all Livewire components in the <code>App\Http\Livewire</code> directory.</p>
+
+<aside class="success">
+Note: I used Livewire for the 2FA code box because if the page refreshed, the QR code would change thus invalidating the whole process. I also thought it would be cleaner than Vue since it's such small functionality.
+</aside>
+<h2 id='configuration'>Configuration</h2>
+<p>All of the configurable items of the xeparrot can be found in the config/engine.php file. Each item should have a relevant doc block.</p>
+
+<p>There may be other configuration files published by default from some packages such as activitylog, permission, geoip, etc.</p>
+<h1 id='resource-structure'>Resource Structure</h1>
+<p>This project follows standard Laravel resource folder structure.</p>
+<h2 id='javascript'>Javascript</h2>
+<p>The javascript files are as follows:</p>
+
+<ul>
+<li><p><code>backend/app.js</code> - Compiles the backend javascript</p></li>
+<li><p><code>frontend/app.js</code> - Compiles the frontend javascript</p></li>
+<li><p><code>bootstrap.js</code> - Bootstrap functionality for the frontend</p></li>
+<li><p><code>plugins.js</code> - Random javascript/jQuery functionality used globally</p></li>
+</ul>
+<h2 id='language'>Language</h2>
+<p>All language files for this version of the xeparrot are in JSON format except default Laravel files and package languages if published.</p>
+<h2 id='scss'>SCSS</h2>
+<p>The SCSS files are as follows:</p>
+
+<ul>
+<li><code>backend/app.scss</code> - Compiles the backend CSS</li>
+<li><code>frontend/_global.scss</code> - Frontend global SCSS</li>
+<li><code>frontend/_variables.scss</code> - Frontend Bootstrap overrides</li>
+<li><code>frontend/app.scss</code> - Compiles the frontend CSS</li>
+<li><code>_global.scss</code> - Global styles included in frontend and backend</li>
+</ul>
+<h2 id='view'>View</h2>
+<p>The views are structured much like the rest of the application, frontend/backend/etc. They usually follow the namespace structure.</p>
+
+<p>There&#39;s only one folder to note, and that is components which are blade components used throughout the blade files. At the time of this writing they are all anonymous components, or they don&#39;t have an associated class and just work off of the props passed into them.</p>
+<h1 id='xemodule'>XeModule</h1><h2 id='quick-example'>Quick Example</h2>
+<p>Generate your first xemodule using <code>php artisan xemodule:make Blog</code> . The following structure will be generated.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>app/
+bootstrap/
+vendor/
+Modules/
+  ├── Blog/
+      ├── Assets/
+      ├── Config/
+      ├── Console/
+      ├── Database/
+          ├── Migrations/
+          ├── Seeders/
+      ├── Entities/
+      ├── Http/
+          ├── Controllers/
+          ├── Middleware/
+          ├── Requests/
+      ├── Providers/
+          ├── BlogServiceProvider.php
+          ├── RouteServiceProvider.php
+      ├── Resources/
+          ├── assets/
+              ├── js/
+                ├── app.js
+              ├── sass/
+                ├── app.scss
+          ├── lang/
+          ├── views/
+      ├── Routes/
+          ├── api.php
+          ├── web.php
+      ├── Repositories/
+      ├── Tests/
+      ├── composer.json
+      ├── module.json
+      ├── package.json
+      ├── webpack.mix.js
+</code></pre></div><h2 id='create-module'>Create Module</h2>
+<p>Creating a xemodule is simple and straightforward. Run the following command to create a xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan xemodule:make &lt;xemodule-name&gt;
+
+</code></pre></div>
+<p>Replace <xemodule-name> by your desired name.</p>
+
+<p>It is also possible to create multiple xemodules in one command.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog User Auth
+
+</code></pre></div>
+<p>By default when you create a new xemodule, the command will add some resources like a controller, seed class, service provider, etc. automatically. If you don&#39;t want these, you can add --plain flag, to generate a plain xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog --plain
+# or
+php artisan xemodule:make Blog -p
+</code></pre></div><h2 id='naming-convention'>Naming convention</h2>
+<p>Because we are autoloading the xemodules using psr-4, we strongly recommend using StudlyCase convention.</p>
+<h2 id='folder-structure'>Folder Structure</h2><div class="highlight"><pre class="highlight plaintext"><code>app/
+bootstrap/
+vendor/
+Modules/
+  ├── Blog/
+      ├── Assets/
+      ├── Config/
+      ├── Console/
+      ├── Database/
+          ├── Migrations/
+          ├── Seeders/
+      ├── Entities/
+      ├── Http/
+          ├── Controllers/
+          ├── Middleware/
+          ├── Requests/
+          ├── routes.php
+      ├── Providers/
+          ├── BlogServiceProvider.php
+      ├── Resources/
+          ├── lang/
+          ├── views/
+      ├── Repositories/
+      ├── Tests/
+      ├── composer.json
+      ├── module.json
+      ├── start.php
+</code></pre></div><h2 id='custom-name-spaces'>Custom Name Spaces</h2>
+<p>When you create a new xemodule it also registers new custom namespace for Lang, View and Config. For example, if you create a new xemodule named blog, it will also register new namespace/hint blog for that xemodule. Then, you can use that namespace for calling Lang, View or Config. Following are some examples of its usage:</p>
+
+<p>Calling Lang:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Lang</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'blog::group.name'</span><span class="p">);</span>
+
+<span class="o">@</span><span class="nf">trans</span><span class="p">(</span><span class="s1">'blog::group.name'</span><span class="p">);</span>
+</code></pre></div>
+<p>Calling View:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nf">view</span><span class="p">(</span><span class="s1">'blog::index'</span><span class="p">)</span>
+
+<span class="nf">view</span><span class="p">(</span><span class="s1">'blog::partials.sidebar'</span><span class="p">)</span>
+
+</code></pre></div>
+<p>Calling Config:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code>
+<span class="nc">Config</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'blog.name'</span><span class="p">)</span>
+
+</code></pre></div><h2 id='default-namespace'>Default namespace</h2>
+<p>What the default namespace will be when generating xemodules.</p>
+
+<p>Key: <code>namespace</code></p>
+
+<p>Default: <code>Modules</code></p>
+<h2 id='overwrite-the-generated-files'>Overwrite the generated files</h2>
+<p>Overwrite the default generated stubs to be used when generating xemodules. This can be useful to customise the output of different files.</p>
+
+<p>Key: <code>stubs</code></p>
+<h2 id='overwrite-the-paths'>Overwrite the paths</h2>
+<p>Overwrite the default paths used throughout the package.</p>
+
+<p>Key: <code>paths</code></p>
+<h2 id='scan-additional-folders-for-xemodules'>Scan additional folders for xemodules</h2>
+<p>This is disabled by default. Once enabled, the package will look for xemodules in the specified array of paths.</p>
+
+<p>Key: <code>scan</code></p>
+<h2 id='composer-file-template'>Composer file template</h2>
+<p>Customise the generated <code>composer.json</code> file.</p>
+
+<p>Key: <code>composer</code></p>
+<h2 id='caching'>Caching</h2>
+<p>If you have many xemodules it&#39;s a good idea to cache this information (like the multiple xemodule.json files for example).</p>
+
+<p>Key: <code>cache</code></p>
+<h2 id='registering-custom-namespace'>Registering custom namespace</h2>
+<p>Decide which custom namespaces need to be registered by the package. If one is set to false, the package won&#39;t handle its registration.</p>
+
+<p>Key: <code>register</code></p>
+<h2 id='helpers-2'>Helpers</h2><h3 id='module-path-function'>Module path function</h3>
+<p>Get the path to the given xemodule.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$path</span> <span class="o">=</span> <span class="nf">module_path</span><span class="p">(</span><span class="s1">'Blog'</span><span class="p">);</span>
+</code></pre></div><h2 id='compiling-assets'>Compiling Assets</h2><h3 id='installation-amp-setup'>Installation &amp; Setup</h3>
+<p>When you create a new xemodule it also create assets for CSS/JS and the webpack.mix.js configuration file.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog
+</code></pre></div>
+<p>Change directory to the xemodule:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>cd Modules/Blog
+</code></pre></div>
+<p>The default package.json file includes everything you need to get started. You may install the dependencies it references by running:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>npm install
+</code></pre></div><h2 id='running-mix'>Running Mix</h2>
+<p>Mix is a configuration layer on top of Webpack, so to run your Mix tasks you only need to execute one of the NPM scripts that is included with the default laravel-xemodules package.json file</p>
+<div class="highlight"><pre class="highlight plaintext"><code>// Run all Mix tasks...
+npm run dev
+
+// Run all Mix tasks and minify output...
+npm run production
+</code></pre></div>
+<p>After generating the versioned file, you won&#39;t know the exact file name. So, you should use Laravel&#39;s global mix function within your views to load the appropriately hashed asset. The mix function will automatically determine the current name of the hashed file:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>// Modules/Blog/Resources/views/layouts/master.blade.php
+
+&lt;link rel="stylesheet" href="{{ mix('css/blog.css') }}"&gt;
+
+&lt;script src="{{ mix('js/blog.js') }}"&gt;&lt;/script&gt;
+</code></pre></div>
+<p>For more info on Laravel Mix view the documentation here: https://laravel.com/docs/mix</p>
+
+<aside class="success">
+Note: to prevent the main Laravel Mix configuration from overwriting the `public/mix-manifest.json` file:
+</aside>
+
+<p>Install <code>laravel-mix-merge-manifest</code></p>
+<div class="highlight"><pre class="highlight plaintext"><code>npm install laravel-mix-merge-manifest --save-dev
+</code></pre></div>
+<p>Modify <code>webpack.mix.js</code> main file</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">mix</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">laravel-mix</span><span class="dl">'</span><span class="p">);</span>
+
+
+<span class="cm">/* Allow multiple Laravel Mix applications*/</span>
+<span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">laravel-mix-merge-manifest</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">mix</span><span class="p">.</span><span class="nx">mergeManifest</span><span class="p">();</span>
+<span class="cm">/*----------------------------------------*/</span>
+
+<span class="nx">mix</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="dl">'</span><span class="s1">resources/assets/js/app.js</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">public/js</span><span class="dl">'</span><span class="p">)</span>
+   <span class="p">.</span><span class="nx">sass</span><span class="p">(</span><span class="dl">'</span><span class="s1">resources/assets/sass/app.scss</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">public/css</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><h2 id='artisan-commands-2'>Artisan commands</h2>
+<aside class="success">
+You can use the following commands with the --help suffix to find its arguments and options.
+</aside>
+
+<p>Note all the following commands use &quot;Blog&quot; as example xemodule name, and example class/file names</p>
+<h3 id='utility-commands'>Utility commands</h3><h3 id='xemodule-make'>xemodule:make</h3>
+<p>Generate a new xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog
+</code></pre></div><h3 id='xemodule-make-2'>xemodule:make</h3>
+<p>Generate multiple xemodules at once.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog User Auth
+</code></pre></div><h3 id='xemodule-use'>xemodule:use</h3>
+<p>Use a given xemodule. This allows you to not specify the xemodule name on other commands requiring the xemodule name as an argument.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:use
+</code></pre></div><h3 id='xemodule-unuse'>xemodule:unuse</h3>
+<p>This unsets the specified xemodule that was set with the xemodule:use command.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:unuse
+</code></pre></div><h3 id='xemodule-list'>xemodule:list</h3>
+<p>List all available xemodules.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:list
+</code></pre></div><h3 id='xemodule-migrate'>xemodule:migrate</h3>
+<p>Migrate the given xemodule, or without a xemodule an argument, migrate all xemodules.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:migrate Blog
+</code></pre></div><h3 id='xemodule-migrate-rollback'>xemodule:migrate-rollback</h3>
+<p>Rollback the given xemodule, or without an argument, rollback all xemodules.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:migrate-rollback Blog
+</code></pre></div><h3 id='xemodule-migrate-refresh'>xemodule:migrate-refresh</h3>
+<p>Refresh the migration for the given xemodule, or without a specified xemodule refresh all xemodules migrations.</p>
+<h3 id='xemodule-migrate-reset-blog'>xemodule:migrate-reset Blog</h3>
+<p>Reset the migration for the given xemodule, or without a specified xemodule reset all xemodules migrations.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:migrate-reset Blog
+</code></pre></div><h3 id='xemodule-seed'>xemodule:seed</h3>
+<p>Seed the given xemodule, or without an argument, seed all xemodules</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:seed Blog
+</code></pre></div><h3 id='xemodule-publish-migration'>xemodule:publish-migration</h3>
+<p>Publish the migration files for the given xemodule, or without an argument publish all xemodules migrations.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:publish-migration Blog
+</code></pre></div><h3 id='xemodule-publish-config'>xemodule:publish-config</h3>
+<p>Publish the given xemodule configuration files, or without an argument publish all xemodules configuration files.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:publish-config Blog
+</code></pre></div><h3 id='xemodule-publish-translation'>xemodule:publish-translation</h3>
+<p>Publish the translation files for the given xemodule, or without a specified xemodule publish all xemodules migrations.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:publish-translation Blog
+</code></pre></div><h3 id='xemodule-enable'>xemodule:enable</h3>
+<p>Enable the given xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:enable Blog
+</code></pre></div><h3 id='xemodule-disable'>xemodule:disable</h3>
+<p>Disable the given xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:disable Blog
+</code></pre></div><h3 id='xemodule-update'>xemodule:update</h3>
+<p>Update the given xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:update Blog
+</code></pre></div><h2 id='generator-commands'>Generator commands</h2><h3 id='xemodule-make-command'>xemodule:make-command</h3>
+<p>Generate the given console command for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-command CreatePostCommand Blog
+</code></pre></div><h3 id='xemodule-make-migration'>xemodule:make-migration</h3>
+<p>Generate a migration for specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-migration create_posts_table Blog
+</code></pre></div><h3 id='xemodule-make-seed'>xemodule:make-seed</h3>
+<p>Generate the given seed name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-seed seed_fake_blog_posts Blog
+</code></pre></div><h3 id='xemodule-make-controller'>xemodule:make-controller</h3>
+<p>Generate a controller for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-controller PostsController Blog
+</code></pre></div><h3 id='xemodule-make-model'>xemodule:make-model</h3>
+<p>Generate the given model for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-model Post Blog
+</code></pre></div>
+<p>Optional options:
+    * <code>--fillable=field1,field2:</code> set the fillable fields on the generated model
+    *  <code>--migration, -m:</code> create the migration file for the given model</p>
+<h3 id='xemodule-make-provider'>xemodule:make-provider</h3>
+<p>Generate the given service provider name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-provider BlogServiceProvider Blog
+</code></pre></div><h3 id='xemodule-make-middleware'>xemodule:make-middleware</h3>
+<p>Generate the given middleware name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-middleware CanReadPostsMiddleware Blog
+</code></pre></div><h3 id='xemodule-make-mail'>xemodule:make-mail</h3>
+<p>Generate the given mail class for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-mail SendWeeklyPostsEmail Blog
+</code></pre></div><h3 id='xemodule-make-mail-2'>xemodule:make-mail</h3>
+<p>Generate the given mail class for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-mail SendWeeklyPostsEmail Blog
+</code></pre></div><h3 id='xemodule-make-notification'>xemodule:make-notification</h3>
+<p>Generate the given notification class name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-notification NotifyAdminOfNewComment Blog
+</code></pre></div><h3 id='xemodule-make-listener'>xemodule:make-listener</h3>
+<p>Generate the given listener for the specified xemodule. Optionally you can specify which event class it should listen to. It also accepts a --queued flag allowed queued event listeners.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-listener NotifyUsersOfANewPost Blog
+php artisan xemodule:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated
+php artisan xemodule:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated --queued
+</code></pre></div><h3 id='xemodule-make-request'>xemodule:make-request</h3>
+<p>Generate the given request for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-request CreatePostRequest Blog
+</code></pre></div><h3 id='xemodule-make-event'>xemodule:make-event</h3>
+<p>Generate the given event for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-event BlogPostWasUpdated Blog
+</code></pre></div><h3 id='xemodule-make-job'>xemodule:make-job</h3>
+<p>Generate the given job for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-job JobName Blog
+
+php artisan xemodule:make-job JobName Blog --sync # A synchronous job class
+</code></pre></div><h3 id='xemodule-route-provider'>xemodule:route-provider</h3>
+<p>Generate the given route service provider for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:route-provider Blog
+</code></pre></div><h3 id='xemodule-make-factory'>xemodule:make-factory</h3>
+<p>Generate the given database factory for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-factory FactoryName Blog
+</code></pre></div><h3 id='xemodule-make-policy'>xemodule:make-policy</h3>
+<p>Generate the given policy class for the specified xemodule.</p>
+
+<p>The Policies is not generated by default when creating a new xemodule. Change the value of paths.generator.policies in xemodules.php to your desired location.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-policy PolicyName Blog
+</code></pre></div><h3 id='xemodule-make-rule'>xemodule:make-rule</h3>
+<p>Generate the given validation rule class for the specified xemodule.</p>
+
+<p>The Rules folder is not generated by default when creating a new xemodule. Change the value of paths.generator.rules in xemodules.php to your desired location.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-rule ValidationRule Blog
+</code></pre></div><h3 id='xemodule-make-resource'>xemodule:make-resource</h3>
+<p>Generate the given resource class for the specified xemodule. It can have an optional --collection argument to generate a resource collection.</p>
+
+<p>The Transformers folder is not generated by default when creating a new xemodule. Change the value of paths.generator.resource in xemodules.php to your desired location.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-resource PostResource Blog
+php artisan xemodule:make-resource PostResource Blog --collection
+</code></pre></div><h3 id='xemodule-make-test'>xemodule:make-test</h3>
+<p>Generate the given test class for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-test EloquentPostRepositoryTest Blog
+</code></pre></div><h2 id='facade-methods'>Facade methods</h2><h3 id='get-all-modules'>Get all modules.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">all</span><span class="p">();</span>
+</code></pre></div><h3 id='get-all-cached-modules'>Get all cached modules.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getCached</span><span class="p">()</span>
+</code></pre></div><h3 id='get-ordered'>Get Ordered</h3>
+<p>Get ordered modules. The modules will be ordered by the priority key in module.json file.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getOrdered</span><span class="p">();</span>
+</code></pre></div><h3 id='get-scanned'>Get Scanned</h3>
+<p>Get scanned modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">scan</span><span class="p">();</span>
+</code></pre></div><h3 id='find-modules'>Find Modules</h3>
+<p>Find a specific module.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<span class="c1">// OR</span>
+<span class="nc">Module</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+</code></pre></div><h3 id='find-a-module'>Find a Module</h3>
+<p>Find a module, if there is one, return the Module instance, otherwise throw Nwidart\Modules\Exeptions\ModuleNotFoundException.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">findOrFail</span><span class="p">(</span><span class="s1">'module-name'</span><span class="p">);</span>
+</code></pre></div><h3 id='scanned-paths'>Scanned Paths</h3>
+<p>Get scanned paths.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getScanPaths</span><span class="p">();</span>
+</code></pre></div><h3 id='collection-modules'>Collection Modules</h3>
+<p>Get all modules as a collection instance.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">toCollection</span><span class="p">();</span>
+</code></pre></div><h3 id='module-status'>Module Status</h3>
+<p>Get modules by the status. 1 for active and 0 for inactive.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getByStatus</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div><h3 id='check-specific-module'>Check Specific Module</h3>
+<p>Check the specified module. If it exists, will return true, otherwise false.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">has</span><span class="p">(</span><span class="s1">'blog'</span><span class="p">);</span>
+</code></pre></div><h3 id='get-all-enabled-modules'>Get All Enabled Modules</h3>
+<p>Get all enabled modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">allEnabled</span><span class="p">();</span>
+</code></pre></div><h3 id='get-all-disabled-modules'>Get All Disabled Modules</h3>
+<p>Get all disabled modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">allDisabled</span><span class="p">();</span>
+</code></pre></div><h3 id='get-count-of-all-modules'>Get Count of all Modules</h3>
+<p>Get count of all modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nb">count</span><span class="p">();</span>
+</code></pre></div><h3 id='module-path'>Module Path</h3>
+<p>Get module path.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getPath</span><span class="p">();</span>
+</code></pre></div><h3 id='register-modules'>Register Modules</h3>
+<p>Register the modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">register</span><span class="p">();</span>
+
+</code></pre></div><h2 id='module-methods'>Module Methods</h2><h3 id='get-an-entity-from-a-specific-module'>Get an entity from a specific module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span> <span class="o">=</span> <span class="nc">Module</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="s1">'blog'</span><span class="p">);</span>
+</code></pre></div><h3 id='get-module-name'>Get module name.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getName</span><span class="p">();</span>
+</code></pre></div><h3 id='get-module-name-in-lowercase'>Get module name in lowercase.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getLowerName</span><span class="p">();</span>
+</code></pre></div><h3 id='get-module-name-in-studlycase'>Get module name in studlycase.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getStudlyName</span><span class="p">();</span>
+</code></pre></div><h3 id='get-module-path'>Get module path.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getPath</span><span class="p">();</span>
+</code></pre></div><h3 id='get-extra-path'>Get extra path.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getExtraPath</span><span class="p">(</span><span class="s1">'Assets'</span><span class="p">);</span>
+</code></pre></div><h3 id='disable-the-specified-module'>Disable the specified module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">disable</span><span class="p">();</span>
+</code></pre></div><h3 id='enable-the-specified-module'>Enable the specified module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">enable</span><span class="p">();</span>
+</code></pre></div><h3 id='delete-the-specified-module'>Delete the specified module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">();</span>
+</code></pre></div><h3 id='get-requires'>Get Requires</h3>
+<p>Get an array of module requirements. Note: these should be aliases of the module.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getRequires</span><span class="p">();</span>
+</code></pre></div><h2 id='module-resources'>Module Resources</h2>
+<p>Your module will most likely contain what laravel calls resources, those contain configuration, views, translation files, etc. In order for you module to correctly load and if wanted publish them you need to let laravel know about them as in any regular package.</p>
+
+<aside class="success">
+Those resources are loaded in the service provider generated with a module (using module:make), unless the plain flag is used, in which case you will need to handle this logic yourself.
+</aside>
+
+<aside class="success">
+Don't forget to change the paths, in the following code snippets a "Blog" module is assumed.
+</aside>
+<h2 id='configuration-2'>Configuration</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">publishes</span><span class="p">([</span>
+    <span class="k">__DIR__</span><span class="mf">.</span><span class="s1">'/../Config/config.php'</span> <span class="o">=&gt;</span> <span class="nf">config_path</span><span class="p">(</span><span class="s1">'blog.php'</span><span class="p">),</span>
+<span class="p">],</span> <span class="s1">'config'</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">mergeConfigFrom</span><span class="p">(</span>
+    <span class="k">__DIR__</span><span class="mf">.</span><span class="s1">'/../Config/config.php'</span><span class="p">,</span> <span class="s1">'blog'</span>
+<span class="p">);</span>
+</code></pre></div><h2 id='module-views'>Module Views</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$viewPath</span> <span class="o">=</span> <span class="nf">base_path</span><span class="p">(</span><span class="s1">'resources/views/modules/blog'</span><span class="p">);</span>
+
+<span class="nv">$sourcePath</span> <span class="o">=</span> <span class="k">__DIR__</span><span class="mf">.</span><span class="s1">'/../Resources/views'</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">publishes</span><span class="p">([</span>
+    <span class="nv">$sourcePath</span> <span class="o">=&gt;</span> <span class="nv">$viewPath</span>
+<span class="p">]);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">loadViewsFrom</span><span class="p">(</span><span class="nb">array_merge</span><span class="p">(</span><span class="nb">array_map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$path</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$path</span> <span class="mf">.</span> <span class="s1">'/modules/blog'</span><span class="p">;</span>
+<span class="p">},</span> <span class="err">\</span><span class="nc">Config</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'view.paths'</span><span class="p">)),</span> <span class="p">[</span><span class="nv">$sourcePath</span><span class="p">]),</span> <span class="s1">'blog'</span><span class="p">);</span>
+</code></pre></div>
+<p>The main part here is the loadViewsFrom method call. If you don&#39;t want your views to be published to the laravel views folder, you can remove the call to the $this-&gt;publishes() call.</p>
+<h2 id='language-files'>Language files</h2><div class="highlight"><pre class="highlight php tab-php"><code> <span class="nv">$langPath</span> <span class="o">=</span> <span class="nf">base_path</span><span class="p">(</span><span class="s1">'resources/lang/modules/blog'</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$langPath</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">loadTranslationsFrom</span><span class="p">(</span><span class="nv">$langPath</span><span class="p">,</span> <span class="s1">'blog'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">loadTranslationsFrom</span><span class="p">(</span><span class="k">__DIR__</span> <span class="mf">.</span><span class="s1">'/../Resources/lang'</span><span class="p">,</span> <span class="s1">'blog'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='factories'>Factories</h3>
+<p>If you want to use laravel factories you will have to add the following in your service provider:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="nf">singleton</span><span class="p">(</span><span class="nc">Factory</span><span class="o">::</span><span class="n">class</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nc">Factory</span><span class="o">::</span><span class="nf">construct</span><span class="p">(</span><span class="k">__DIR__</span> <span class="mf">.</span> <span class="s1">'/Database/factories'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='module-console-commands'>Module Console Commands</h2>
+<p>Your module may contain console commands. You can generate these commands manually, or with the following helper:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan module:make-command CreatePostCommand Blog
+</code></pre></div>
+<p>This will create a CreatePostCommand inside the Blog module. By default this will be Modules/Blog/Console/CreatePostCommand.</p>
+
+<p>Please refer to the laravel documentation on artisan commands to learn all about them.</p>
+<h2 id='registering-the-command'>Registering the command</h2>
+<p>You can register the command with the laravel method called commands that is available inside a service provider class.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">commands</span><span class="p">([</span>
+    <span class="err">\</span><span class="nc">Modules\Blog\Console\CreatePostCommand</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+<span class="p">]);</span>
+</code></pre></div>
+<p>You can now access your command via php artisan in the console.</p>
+<h2 id='registering-module-events'>Registering Module Events</h2>
+<p>Your module may contain events and event listeners. You can create these classes manually, or with the following helpers:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan module:make-event BlogPostWasUpdated Blog
+php artisan module:make-listener NotifyAdminOfNewPost Blog
+</code></pre></div>
+<p>Once those are create you need to register them in laravel. This can be done in 2 ways:</p>
+
+<ul>
+<li>Manually calling $this-&gt;app[&#39;events&#39;]-&gt;listen(BlogPostWasUpdated::class, NotifyAdminOfNewPost::class); in your module service provider</li>
+<li>Or by creating a event service provider for your module which will contain all its events, similar to the EventServiceProvider under the app/ namespace.</li>
+</ul>
+<h2 id='creating-an-eventserviceprovider'>Creating an EventServiceProvider</h2>
+<p>Once you have multiple events, you might find it easier to have all events and their listeners in a dedicated service provider. This is what the EventServiceProvider is for.</p>
+
+<p>Create a new class called for instance EventServiceProvider in the Modules/Blog/Providers folder (Blog being an example name).</p>
+
+<p>This class needs to look like this:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="kn">namespace</span> <span class="nn">Modules\Blog\Providers</span><span class="p">;</span>
+
+<span class="kn">use</span> <span class="nc">Illuminate\Foundation\Support\Providers\EventServiceProvider</span> <span class="k">as</span> <span class="nc">ServiceProvider</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">EventServiceProvider</span> <span class="kd">extends</span> <span class="nc">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$listen</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="p">}</span>
+</code></pre></div><h1 id='menu-management'>Menu Management</h1><h2 id='quick-example-2'>Quick Example</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="c1">// Menu.php</span>
+<span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'About'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">],</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Settings'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nb">header</span><span class="p">(</span><span class="s1">'ACCOUNT'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/settings/design'</span><span class="p">,</span> <span class="s1">'Design'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">divider</span><span class="p">();</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'logout'</span><span class="p">,</span> <span class="s1">'Logout'</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// main.blade.php</span>
+<span class="p">{</span><span class="o">!!</span> <span class="nc">Menu</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">)</span> <span class="o">!!</span><span class="p">}</span>
+</code></pre></div><h2 id='creating-menu'>Creating Menu</h2>
+<p>You can define your menus in your desired file / class, as long as it is autoload by composer.</p>
+
+<p>To create a menu, simply call the create method from Menu facade. The first parameter is the menu name and the second parameter is callback for defining menu items.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// define your menu items here</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='menu-item'>Menu Item</h2>
+<p>As explained before, we can defining menu item in the callback by accessing $menu variable, which the variable is instance of Nwidart\Menus\MenuBuilder class.</p>
+
+<p>To defining a plain URL, you can use -&gt;url() method.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// URL, Title, Attributes</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'home'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'blank'</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>If you have named route, you define the menu item by calling -&gt;route() method.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span>
+        <span class="s1">'users.show'</span><span class="p">,</span> <span class="c1">// route name</span>
+        <span class="s1">'View Profile'</span><span class="p">,</span> <span class="c1">// title</span>
+        <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">],</span> <span class="c1">// route parameters</span>
+        <span class="p">[</span><span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'blank'</span><span class="p">]</span> <span class="c1">// attributes</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>You can also defining the menu item via array by calling -&gt;add() method.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">add</span><span class="p">([</span>
+        <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'about'</span><span class="p">,</span>
+        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'About'</span><span class="p">,</span>
+        <span class="s1">'attributes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'_blank'</span>
+        <span class="p">]</span>
+    <span class="p">]);</span>
+
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">add</span><span class="p">([</span>
+        <span class="s1">'route'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'profile'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="s1">'nwidart'</span><span class="p">]],</span>
+        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Visit My Profile'</span><span class="p">,</span>
+        <span class="s1">'attributes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'_blank'</span>
+        <span class="p">]</span>
+    <span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='menu-dropdown'>Menu Dropdown</h2>
+<p>To create a dropdown menu, you can call to -&gt;dropdown() method and passing the first parameter by title of dropdown and the second parameter by closure callback that retrieve $sub variable. The $sub variable is the the instance of Nwidart\Menus\MenuItem class.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Settings'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/account'</span><span class="p">,</span> <span class="s1">'Account'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/password'</span><span class="p">,</span> <span class="s1">'Password'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/design'</span><span class="p">,</span> <span class="s1">'Design'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='menu-dropdown-multi-level'>Menu Dropdown Multi Level</h2>
+<p>You can also create a dropdown inside dropdown by using -&gt;dropdown() method. This will allow to to create a multilevel menu items.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Account'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'profile'</span><span class="p">,</span> <span class="s1">'Visit My Profile'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Settings'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/account'</span><span class="p">,</span> <span class="s1">'Account'</span><span class="p">);</span>
+            <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/password'</span><span class="p">,</span> <span class="s1">'Password'</span><span class="p">);</span>
+            <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/design'</span><span class="p">,</span> <span class="s1">'Design'</span><span class="p">);</span>
+        <span class="p">});</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'logout'</span><span class="p">,</span> <span class="s1">'Logout'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div><h1 id='admin-pages'>Admin Pages</h1><h2 id='define-controllers'>Define Controllers</h2>
+<p>Xeparrot allows to create backend level admin pages, so first thing you should add this service on your created controller</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="kn">use</span> <span class="nc">App\Services\SettingPageGeneratorBackend</span><span class="p">;</span>
+</code></pre></div>
+<p>Now you can define forms controllers components</p>
+<div class="highlight"><pre class="highlight php tab-php"><code>  <span class="nv">$adminPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SettingPageGeneratorBackend</span><span class="p">(</span><span class="s1">'title'</span><span class="p">,</span><span class="s1">'views'</span><span class="p">,</span><span class="s1">'post_url'</span><span class="p">);</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Title of setting pages.</td>
+</tr>
+<tr>
+<td>views</td>
+<td>string</td>
+<td>Return view page name.</td>
+</tr>
+<tr>
+<td>post_url</td>
+<td>string</td>
+<td>form post route</td>
+</tr>
+</tbody></table>
+<h2 id='add-form-controllers'>Add form controllers</h2>
+<p>Follow this example, you can define form components</p>
+<div class="highlight"><pre class="highlight php tab-php"><code> <span class="nv">$adminPage</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'name'</span><span class="p">,</span>
+            <span class="s1">'is_required,
+            '</span><span class="n">label</span><span class="s1">',
+            '</span><span class="n">description</span><span class="s1">',
+            '</span><span class="n">category</span><span class="s1">',
+            '</span><span class="n">type</span><span class="s1">',
+            '</span><span class="n">value</span><span class="err">'</span><span class="p">);</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>component name.</td>
+</tr>
+<tr>
+<td>is_required</td>
+<td>bool</td>
+<td>Return view page name.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>form post route</td>
+</tr>
+<tr>
+<td>description</td>
+<td>text</td>
+<td>description</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>category name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>controller components types</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>field values</td>
+</tr>
+<tr>
+<td>data</td>
+<td>array</td>
+<td>external data list</td>
+</tr>
+</tbody></table>
+<h2 id='form-component-types'>Form component types</h2>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>text components</td>
+</tr>
+<tr>
+<td>select</td>
+<td>drop down component</td>
+</tr>
+<tr>
+<td>textarea</td>
+<td>text area field</td>
+</tr>
+<tr>
+<td>file</td>
+<td>file uploader field</td>
+</tr>
+</tbody></table>
+<h2 id='example-form'>Example Form</h2>
+<p>Following this example</p>
+<div class="highlight"><pre class="highlight php tab-php"><code>
+<span class="nv">$settingPageGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SettingPageGeneratorBackend</span><span class="p">(</span><span class="s1">'FileManager'</span><span class="p">,</span><span class="s1">'values'</span><span class="p">,</span><span class="s1">'https://hellocom.com'</span><span class="p">);</span>
+
+
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_name'</span><span class="p">,</span>
+                <span class="kc">true</span><span class="p">,</span>
+                <span class="s1">'Project Name'</span><span class="p">,</span>
+                <span class="s1">'Please enter your project name'</span><span class="p">,</span>
+                <span class="s1">'Projects'</span><span class="p">,</span>
+                <span class="s1">'text'</span><span class="p">,</span>
+                <span class="s1">'hello'</span><span class="p">);</span>
+
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_example'</span><span class="p">,</span>
+            <span class="kc">true</span><span class="p">,</span>
+            <span class="s1">'Project Example'</span><span class="p">,</span>
+            <span class="s1">'This is best example label'</span><span class="p">,</span>
+            <span class="s1">'Hello'</span><span class="p">,</span>
+            <span class="s1">'select'</span><span class="p">,</span>
+                <span class="s1">'values2'</span><span class="p">,[</span>
+            <span class="p">[</span>
+                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Sanjaya Senevirathne'</span><span class="p">,</span>
+                <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'values'</span>
+
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Kumara Bandara'</span><span class="p">,</span>
+                <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'values2'</span>
+            <span class="p">]</span>
+        <span class="p">]);</span>
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_name'</span><span class="p">,</span>
+            <span class="kc">false</span><span class="p">,</span>
+            <span class="s1">'Project Name'</span><span class="p">,</span>
+            <span class="s1">'Please enter your project name'</span><span class="p">,</span>
+            <span class="s1">'Projects'</span><span class="p">,</span>
+            <span class="s1">'textarea'</span><span class="p">,</span>
+            <span class="s1">'hello'</span><span class="p">);</span>
+
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_name'</span><span class="p">,</span>
+            <span class="kc">true</span><span class="p">,</span>
+            <span class="s1">'Project Name'</span><span class="p">,</span>
+            <span class="s1">'Please enter your project name'</span><span class="p">,</span>
+            <span class="s1">'Projects'</span><span class="p">,</span>
+            <span class="s1">'file'</span><span class="p">,</span>
+            <span class="s1">'hello'</span><span class="p">);</span>
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">renderControllers</span><span class="p">();</span>
+        <span class="nv">$category</span> <span class="o">=</span> <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">getContent</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">renderPage</span><span class="p">(),[</span>
+            <span class="s1">'formData'</span> <span class="o">=&gt;</span> <span class="nv">$category</span><span class="p">,</span>
+            <span class="s1">'formURL'</span> <span class="o">=&gt;</span> <span class="s1">''</span>
+        <span class="p">]);</span>
+
+</code></pre></div><h1 id='errors'>Errors</h1>
+<p>The AdUp.io Shopper API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
