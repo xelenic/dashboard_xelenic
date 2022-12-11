@@ -1,0 +1,41 @@
+name: CI/CD Pipeline - DO
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  continuous-deployment-main:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to Main Server
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ MainFTP.HOST }}
+          username: ${{ MainFTP.USERNAME }}
+          password: ${{ MainFTP.PASSWORD }}
+
+          script: |
+            cd /var/www/v3/shopper-api
+            gh repo clone Ad-Up-Fast-checkouts/adupio-api-common-migrations .
+            cd /var/www/v3/shopper-api/storage/app/
+            sudo mkdir /var/www/v3/shopper-api/storage/app/common_resources
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
+            composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            php artisan key:generate
+            chmod -R 777 storage bootstrap/cache
+            php artisan migrate
+            php artisan key:generate --env=testing
+            ln -s /var/www/v3/static-data /var/www/v3/shopper-api/public/static-data
+            cd /var/www/v3/shopper-api/psp
+            gh repo clone Ad-Up-Fast-checkouts/adupio-v3-psp-modules .
+            cd /var/www/v3/shopper-api/documentation/api_docs
+            sudo gem install bundler
+            sudo bundle install
+            bundle exec middleman build --clean
+            ln -s /var/www/v3/shopper-api/documentation/api_docs/build /var/www/v3/shopper-api/public/docs
+            ln -s /var/www/v3/shopper-api/documentation/api_docs/build/stylesheets /var/www/v3/shopper-api/public/stylesheets
+            ln -s /var/www/v3/shopper-api/documentation/api_docs/build/javascripts /var/www/v3/shopper-api/public/javascripts
+            ln -s /var/www/v3/shopper-api/documentation/api_docs/build/images /var/www/v3/shopper-api/public/images
+            ln -s /var/www/v3/shopper-api/documentation/api_docs/build/fonts /var/www/v3/shopper-api/public/fonts
