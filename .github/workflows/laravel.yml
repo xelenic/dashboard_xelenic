@@ -7,14 +7,13 @@ on:
 jobs:
   continuous-deployment-main:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to Main Server
         uses: appleboy/ssh-action@v0.1.4
         with:
-          host: ${{ MainFTP.HOST }}
-          username: ${{ MainFTP.USERNAME }}
-          password: ${{ MainFTP.PASSWORD }}
+          host: ${{ secrets.DO_SSH_HOST }}
+          username: ${{ secrets.DO_SSH_USER }}
+          password: ${{ secrets.DO_SSH_PASSWORD }}
 
           script: |
             cd /var/www/v3/shopper-api
